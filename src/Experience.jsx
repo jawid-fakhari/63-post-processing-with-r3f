@@ -1,16 +1,21 @@
 import { OrbitControls } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 
-import { EffectComposer, ToneMapping } from '@react-three/postprocessing'
+import { EffectComposer, ToneMapping, Vignette } from '@react-three/postprocessing'
 import { ToneMappingMode } from 'postprocessing'
 
 export default function Experience() {
     return <>
         {/* importare EffectComposer, ToneMapping */}
         <EffectComposer
-            multisampling={8}//prevent the aliasing effect
+        //multisampling={8}//prevent the aliasing effect
         >
             <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
+            <Vignette
+                // Viegnette effetto hallow intorno immagine
+                offset={0.3}
+                darkness={0.9}
+            />
         </EffectComposer>
 
         <Perf position="top-left" />
