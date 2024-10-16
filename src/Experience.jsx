@@ -1,11 +1,16 @@
 import { OrbitControls } from '@react-three/drei'
-import { EffectComposer } from '@react-three/postprocessing'
 import { Perf } from 'r3f-perf'
+
+import { EffectComposer, ToneMapping } from '@react-three/postprocessing'
+import { ToneMappingMode } from 'postprocessing'
 
 export default function Experience() {
     return <>
-        <EffectComposer>
-
+        {/* importare EffectComposer, ToneMapping */}
+        <EffectComposer
+            multisampling={8}//prevent the aliasing effect
+        >
+            <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
         </EffectComposer>
 
         <Perf position="top-left" />
