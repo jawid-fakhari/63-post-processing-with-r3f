@@ -2,7 +2,7 @@ import { OrbitControls } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 
 import { EffectComposer, ToneMapping, Vignette } from '@react-three/postprocessing'
-import { ToneMappingMode } from 'postprocessing'
+import { BlendFunction, ToneMappingMode } from 'postprocessing'
 
 export default function Experience() {
     return <>
@@ -15,6 +15,7 @@ export default function Experience() {
                 // Viegnette effetto hallow intorno immagine
                 offset={0.3}
                 darkness={0.9}
+                blendFunction={BlendFunction.NORMAL}
             />
         </EffectComposer>
 
