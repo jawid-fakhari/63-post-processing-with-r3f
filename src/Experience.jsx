@@ -2,7 +2,7 @@ import { OrbitControls } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 
 import { EffectComposer, Glitch, ToneMapping, Vignette } from '@react-three/postprocessing'
-import { BlendFunction, ToneMappingMode } from 'postprocessing'
+import { GlitchMode, BlendFunction, ToneMappingMode } from 'postprocessing'
 
 export default function Experience() {
     return <>
@@ -22,6 +22,7 @@ export default function Experience() {
                 delay={[0.5, 1]}
                 duration={[0.1, 0.3]}
                 strength={[0.2, 0.4]}
+                mode={GlitchMode.CONSTANT_MILD} //importare GlitchMode from postprocessing
             />
         </EffectComposer>
 
