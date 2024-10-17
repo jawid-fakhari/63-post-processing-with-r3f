@@ -3,8 +3,12 @@ import { Perf } from 'r3f-perf'
 
 import { Bloom, DepthOfField, EffectComposer, Glitch, Noise, ToneMapping, Vignette } from '@react-three/postprocessing'
 import { GlitchMode, BlendFunction, ToneMappingMode } from 'postprocessing'
+import Drunk from './Drunk'
+import { useRef } from 'react'
 
 export default function Experience() {
+    const drunkRef = useRef()
+
     return <>
         <color args={['#ffffff']} attach="background" />
 
@@ -42,10 +46,17 @@ export default function Experience() {
                 mipmapBlur
             /> */}
 
-            <DepthOfField
+            {/* <DepthOfField
                 focusDistance={0.025}
                 focalLength={0.025}
                 bokehScale={6}
+            /> */}
+
+            <Drunk
+                ref={drunkRef}
+                frequency={2}
+                amplitude={0.1}
+
             />
 
         </EffectComposer>
