@@ -1,17 +1,20 @@
 import { OrbitControls } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 
-import { EffectComposer, Glitch, Noise, ToneMapping, Vignette } from '@react-three/postprocessing'
+import { Bloom, EffectComposer, Glitch, Noise, ToneMapping, Vignette } from '@react-three/postprocessing'
 import { GlitchMode, BlendFunction, ToneMappingMode } from 'postprocessing'
 
 export default function Experience() {
     return <>
-        <color args={['#ffffff']} attach="background" />
-        {/* importare EffectComposer, ToneMapping */}
+        {/* <color args={['#ffffff']} attach="background" /> */}
+        <color args={['#000000']} attach="background" />
+
+        {/* importare EffectComposer, ToneMapping, Vignette, Glitch, Noise, Bloom */}
+
         <EffectComposer
         //multisampling={8}//prevent the aliasing effect
         >
-            <ToneMapping mode={ToneMappingMode.ACES_FILMIC} />
+            {/* <ToneMapping mode={ToneMappingMode.ACES_FILMIC} /> */}
 
             {/* <Vignette
                 // Viegnette effetto hallow intorno immagine
@@ -27,9 +30,15 @@ export default function Experience() {
                 mode={GlitchMode.CONSTANT_MILD} //importare GlitchMode from postprocessing
             /> */}
 
-            <Noise
+            {/* <Noise
                 premultiply
                 blendFunction={BlendFunction.SOFT_LIGHT}
+            /> */}
+
+            <Bloom
+                //Oggetti devono avere i valori Unit RGB 0-1, ma non rimaniamo tra 0-1 perchè vogliamo l'effetto Bloom quindi aumentiamo il valore anche più di 1, controlla boxGeometry
+                luminanceThreshold={1.1}
+                mipmapBlur
             />
 
         </EffectComposer>
@@ -43,12 +52,16 @@ export default function Experience() {
 
         <mesh castShadow position-x={- 2}>
             <sphereGeometry />
-            <meshStandardMaterial color="orange" />
+            <meshStandardMaterial
+                color="orange"
+            />
         </mesh>
 
         <mesh castShadow position-x={2} scale={1.5}>
             <boxGeometry />
-            <meshStandardMaterial color="mediumpurple" />
+            <meshStandardMaterial
+                color={[4, 2, 2]} //Unit RGB, aumentato per avere effetto bloom
+            />
         </mesh>
 
         <mesh receiveShadow position-y={- 1} rotation-x={- Math.PI * 0.5} scale={10}>
