@@ -36,7 +36,7 @@ export default function Experience() {
             /> */}
 
             <Bloom
-                //Oggetti devono avere i valori Unit RGB 0-1, ma non rimaniamo tra 0-1 perchè vogliamo l'effetto Bloom quindi aumentiamo il valore anche più di 1, controlla boxGeometry
+                //Oggetti devono avere i valori Unit RGB 0-1, ma non rimaniamo tra 0-1 perchè vogliamo l'effetto Bloom quindi aumentiamo il valore anche più di 1, controlla sphereGeometry
                 luminanceThreshold={1.1}
                 mipmapBlur
             />
@@ -53,14 +53,16 @@ export default function Experience() {
         <mesh castShadow position-x={- 2}>
             <sphereGeometry />
             <meshStandardMaterial
-                color="orange"
+                color={[4, 2, 2]} //Unit RGB, aumentato per avere effetto bloom
             />
         </mesh>
 
         <mesh castShadow position-x={2} scale={1.5}>
             <boxGeometry />
             <meshStandardMaterial
-                color={[4, 2, 2]} //Unit RGB, aumentato per avere effetto bloom
+                color="orange"
+                emissive="orange" //Blooming senza usare Unit RGB
+                emissiveIntensity={2} //Blooming senza usare Unit RGB
             />
         </mesh>
 
