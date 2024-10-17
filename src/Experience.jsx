@@ -1,11 +1,12 @@
 import { OrbitControls } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 
-import { EffectComposer, ToneMapping, Vignette } from '@react-three/postprocessing'
+import { EffectComposer, Glitch, ToneMapping, Vignette } from '@react-three/postprocessing'
 import { BlendFunction, ToneMappingMode } from 'postprocessing'
 
 export default function Experience() {
     return <>
+        <color args={['#ffffff']} attach="background" />
         {/* importare EffectComposer, ToneMapping */}
         <EffectComposer
         //multisampling={8}//prevent the aliasing effect
@@ -16,6 +17,11 @@ export default function Experience() {
                 offset={0.3}
                 darkness={0.9}
                 blendFunction={BlendFunction.NORMAL}
+            />
+            <Glitch
+                delay={[0.5, 1]}
+                duration={[0.1, 0.3]}
+                strength={[0.2, 0.4]}
             />
         </EffectComposer>
 
@@ -40,6 +46,7 @@ export default function Experience() {
             <planeGeometry />
             <meshStandardMaterial color="greenyellow" />
         </mesh>
+
 
     </>
 }
