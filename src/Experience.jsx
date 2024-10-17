@@ -52,7 +52,8 @@ export default function Experience() {
 
         <mesh castShadow position-x={- 2}>
             <sphereGeometry />
-            <meshStandardMaterial
+            <meshBasicMaterial
+                //è meglio usare meshBasicMaterial in caso di Bloom e UnitRG cosi l'effetto bloom è da tutti lati
                 color={[4, 2, 2]} //Unit RGB, aumentato per avere effetto bloom
             />
         </mesh>
